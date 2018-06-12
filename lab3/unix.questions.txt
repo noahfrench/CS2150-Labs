@@ -1,0 +1,7 @@
+Noah French (njf5cu)
+Lab 3
+Filename: unix.questions.txt
+Description: One question I still have about Unix.
+9/12/17
+
+Linux and MacOS are both Unix based. Why isn't Windows Unix based? Is the Windows OS its own proprietary thing?

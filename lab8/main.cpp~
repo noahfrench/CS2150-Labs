@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+// foward declarations
+int addOne(int);
+int addThree(int);
+void valueFunc1(const int&);
+
+void arrayFunc(int param[5]) {
+  for (int i = 0; i <5; i++){
+    param[i] = 2;
+  }
+}
+
+int main() {
+  int x = 5;
+  cout << addThree(5) << endl;
+
+  return 0;
+}
+
+int addOne(int x) {
+  return x + 1;
+}
+
+int addThree(int x) {
+  return addOne(x) + 2;
+}
+
+void valueFunc1(int& x) {
+  x = addOne(x);  
+}
+
+

@@ -1,0 +1,42 @@
+/* 
+ * Noah French (njf5cu)
+ * Lab 3
+ * Filename: stack.cpp
+ * File Description: Implementation of Stack
+ * 9/14/17
+ */
+
+#include "stack.h"
+
+// This Stack implementation uses the List (and therefore ListNode/ListItr) classes. New items are pushed onto the stack right after the head. The head is the dummy top of the stack. The top node, then, is head -> next.
+
+// Constructor
+Stack::Stack() {
+}
+
+// empty method
+bool Stack::empty() const {
+  return theList.isEmpty();
+}
+
+// push method
+void Stack::push(int value) {
+  theList.insertAtHead(value);
+}
+
+// pop method
+void Stack::pop() {
+  int topInt = theList.head -> next -> value;
+  theList.remove(topInt);
+}
+
+// top method
+int Stack::top() const {
+  return theList.head -> next -> value;
+}
+
+
+
+
+
+

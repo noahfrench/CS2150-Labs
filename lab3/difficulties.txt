@@ -1,0 +1,8 @@
+ 
+Noah French (njf5cu)
+Lab 3
+Filename: difficulties.txt
+Description: Difficulties encountered during post-lab 3
+9/14/17
+
+At first, I tried to implement the stack using the doubly linked list classes from Lab 2. I had a lot of problems figuring out the correct inheritance (where to put #include, and whether to include the .h or the .cpp) so I gave up and decided to only use the ListNode Class. I still had some problems with declaring methods twice (or not at all) so I had to trace back the inheritance trees until my code would compile. Once it compiled, all the stack functions worked perfectly on the first try. 

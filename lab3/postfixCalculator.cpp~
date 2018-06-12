@@ -1,0 +1,20 @@
+/**
+ * Noah French (njf5cu)
+ * Lab 3
+ * Filename: postfixCalculator.cpp
+ * Description: Implementation of the Postfix Calculator
+ * 9/12/17
+ **/
+
+using namespace std;
+
+#include "postfixCalculator.h"
+
+// Constructor
+PostfixCalculator::PostfixCalculator() {
+}
+
+void PostfixCalculator::pushNum(int x) {
+  theStack.push(x);
+}
+

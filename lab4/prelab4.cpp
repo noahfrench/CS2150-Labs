@@ -1,0 +1,73 @@
+/* Noah French (njf5ch)
+ * Lab 4
+ * Filename: prelab4.cpp
+ * Description: Lab 4 functions and main
+ * 9/19/17
+ */
+
+#include <iostream>
+#include <string>
+#include <math.h>
+#include <climits>
+
+using namespace std;
+
+// print out the number of bytes of each data type on this hardware
+void sizeOfTest() {
+  cout << "Size of an int: " <<  sizeof(int) << " bytes" << endl;
+  cout << "Size of an unsigned int: " << sizeof(unsigned int) << " bytes" << endl;
+  cout << "Size of a float: " << sizeof(float) << " bytes" << endl;
+  cout << "Size of a double: " << sizeof(double) << " bytes" << endl;
+  cout << "Size of a char: " << sizeof(char) << " byte" << endl;
+  cout << "Size of a bool: " << sizeof(bool) << " byte" << endl;
+  cout << "Size of an int*: " << sizeof(int*) << " bytes" << endl;
+  cout << "Size of a char*: " << sizeof(char*) << " bytes" << endl;
+  cout << "Size of a double*: " << sizeof(double*) << " bytes" << endl;
+}
+
+// convert a 32 bit unsigned int from decimal to binary. Start at the beginning (big-edian), where the place value is 2^31. If the int - 2^31 is not negative,
+// subtract 2^31 from the number and add a 1 to the binary string. Else add a 0.  Repeat the process until all 32 bits are filled with a 0 or 1. 
+void outputBinary(unsigned int x) {
+  string binaryString;
+  
+  for (int y = 31; y > -1; y--) {
+    if (x - pow(2, y) >= 0) {
+      binaryString += '1';
+      x -= pow(2, y);
+    } else {
+      binaryString += '0';
+    }
+  }
+  cout << binaryString << endl;
+}
+
+// demonstrate integer overflow by adding 1 to a maximum value 32-bit int, and watch the world crumble!
+void overflow() {
+  unsigned int x = 4294967295;
+
+  cout << "unsigned int x = " << x << endl;
+  cout << "x + 1 = " << x+1 << endl;
+  cout << "The maximum value of a 4-byte (32 bit) unsigned integer is 4294967295 in decimal." << endl <<  "In base two, this number is 11111111 11111111 11111111 11111111." << endl << "1 cannot be added to this number without adding more bits," << endl << "so the number wraps around back to 00000000 00000000 00000000 00000000, or 0 in decimal." << endl;
+  
+}
+
+int main() {
+  unsigned int x;
+  cout<< endl;
+  cout << "Enter an integer value: ";
+  cin >> x;
+  cout << endl;
+
+  sizeOfTest();
+  cout << endl;
+
+  outputBinary(x);
+  cout << endl;
+
+  overflow();
+  cout<< endl;
+
+
+  return 0;
+}
+

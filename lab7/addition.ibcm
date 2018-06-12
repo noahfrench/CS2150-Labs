@@ -1,0 +1,28 @@
+C00A 0000         jmp     start     skip around the variables
+0000 0001   a	  dw	  0	    int a
+0000 0002   b	  dw	  0	    int b
+0000 0003   c	  dw	  0	    int c
+0000 0004  	  	  	    space for changes!
+0000 0005     
+0000 0006   	  	  	    
+0000 0007
+0000 0008
+0000 0009
+1000 000A   loop  readH             read a
+4001 000B   	  store   a	    	 
+1000 000C	  readH	            read b
+4002 000D	  store   b
+1000 000E	  readH		    read c
+4003 000F	  store   c
+3001 0010	  load	  a	    a
+5002 0011	  add	  b	    a+b
+5003 0012	  add	  c	    a+b+c
+D015 0013  	  jmpe    xit       if a+b+c = 0 output successful numbers!
+C00A 0014   	  jmp     loop	    if a+b+c != 0 take in three new numbers
+3001 0015   xit	  load	  a
+1800 0016	  writeH  a	    print out a
+3002 0017	  load	  b
+1800 0018	  writeH  c	    print out b
+3003 0019	  load	  c
+1800 001A	  writeH  c	    print out c
+0000 001B	  halt	  	    You're done! Halt!

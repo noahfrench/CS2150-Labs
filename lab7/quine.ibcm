@@ -1,0 +1,20 @@
+C005 0000            jmp      start    skip around variables
+0000 0001   adr      dw       0        address of line to be printed
+0014 0002   length   dw       12       length of quine (in hex)
+3000 0003   loadit   dw       3000
+0001 0004   one      dw       1
+3013 0005   start    load     xit      set adr to 0000
+4001 0006            store    adr
+3002 0007   loop     load     length   if (adr >= length) goto xit
+6001 0008            sub      adr
+D013 0009            jmpe     xit
+3003 000A            load     loadit   load the value at the adr 
+5001 000B            add      adr
+400D 000C            store    doit
+0000 000D   doit     dw       0
+1800 000E            writeH            print the value at memory address adr
+3001 000F            load     adr      adr ++
+5004 0010            add      one
+4001 0011            store    adr
+C007 0012            jmp      loop     jmp back up to start of loop
+0000 0013   xit      dw       0        halt; you're done

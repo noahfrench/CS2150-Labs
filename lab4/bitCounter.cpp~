@@ -1,0 +1,11 @@
+/* 
+ * Noah French
+ * Lab 4
+ * Filename: bitCounter.cpp
+ * Description: Binary bit counter method
+ * 9/22/17
+ */
+
+#include <iostream>
+
+using namespace std;

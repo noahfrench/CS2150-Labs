@@ -1,0 +1,39 @@
+C009 0000         jmp     start     skip around the vars
+0022 0001  a	  dw	  0	    memory address of current array element (initially set to base memory location)
+0005 0002  size   dw      5	    int size (of array)
+0000 0003  max	  dw	  0	    int max
+0001 0004  i	  dw	  1	    int i (index of array)
+3000 0005  doit   dw      3000	    start process of transfering data from memory address a to aval 	 	    
+0001 0006  one    dw      1			    
+0000 0007  aval   dw      0	    value at memory address a	  	    
+0000 0008
+3022 0009  start  load    first      
+4003 000A      	  store	  max	    set max to first element in the array
+3002 000B  loop	  load	  size      if (i >= size) goto xit
+6004 000C  	  sub	  i
+E01F 000D  	  jmpl    xit
+D01F 000E	  jmpe	  xit
+3001 000F	  load	  a         go to next memory address
+5006 0010	  add	  one
+4001 0011	  store	  a
+3005 0012	  load    doit      load the int at memory address and store it as aval
+5001 0013	  add	  a
+4015 0014	  store   doit2
+0000 0015  doit2  dw      0	    
+4007 0016	  store aval
+6003 0017	  sub 	  max	    if (aval < max) don't make aval the new max
+E01B 0018	  jmpl	  nexti
+3007 0019	  load	  aval
+4003 001A	  store	  max
+3004 001B  nexti  load 	  i	    increment the counter by one
+5006 001C	  add	  one
+4004 001D	  store	  i
+C00B 001E	  jmp	  loop	    goto loop
+3003 001F  xit	  load	  max	    print out the maximum!
+1800 0020  	  writeH  max
+0000 0021	  halt		    halt; we're done!
+0004 0022  first	            array:
+0008 0023
+0002 0024
+0008 0025
+0009 0026

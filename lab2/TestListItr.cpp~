@@ -1,0 +1,15 @@
+#include <iostream>
+#include "ListItr.h"
+
+using namespace std;
+
+int main() {
+  ListItr itr1, itr2;
+
+  ListNode node1, node2;
+
+  itr1 = ListItr(node1);
+
+  return 0;
+
+}

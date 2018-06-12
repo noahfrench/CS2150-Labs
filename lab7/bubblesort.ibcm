@@ -1,0 +1,65 @@
+C00C 0000            jmp     outloop   skip around the vars
+0005 0001   MAX      dw      5         MAX = 5
+0000 0002   i        dw      0         i = 0
+0000 0003   j        dw      0         j = 0
+0001 0004   one      dw      1
+0000 0005   adr      dw      /         address of current array element
+3000 0006   loadit   dw      3000      start process of transferring value from mem adr
+0040 0007   endadr   dw      /         address of last array element 
+003C 0008   startadr dw      0         address of first array element
+0000 0009   val      dw      0         value of current array element 
+0000 000A   val-     dw      0         value of element one previous to current
+4000 000B   storeit  dw      4000      start process of storing new value into array
+3001 000C   outloop  load    MAX       if (i >= MAX) goto xit
+6002 000D            sub     i
+E03B 000E            jmpl    xit
+D03B 000F            jmpe    xit
+3001 0010            load    MAX       reset j to j = MAX - 1 
+6004 0011            sub     one
+4003 0012            store   j
+3003 0013   inloop   load    j         if (i >= j) goto outloop
+6002 0014            sub     i
+E037 0015            jmpl    iitr
+D037 0016            jmpe    iitr
+3008 0017            load    startadr  calculate the memory adr of a[j] and store as adr
+5003 0018            add     j
+4005 0019            store   adr
+3006 001A            load    loadit    store value of a[j] as val
+5005 001B            add     adr
+401D 001C            store   doit
+0000 001D   doit     dw      0
+4009 001E            store   val
+3006 001F            load    loadit    store value of a[j-1] as val-
+5005 0020            add     adr
+6004 0021            sub     one       
+4023 0022            store   doit2
+0000 0023   doit2    dw      0
+400A 0024            store   val-
+3003 0025            load    j         j --
+6004 0026            sub     one
+4003 0027            store   j
+300A 0028            load    val-      if (a[j-1] - a[j] < 0) goto inloop
+6009 0029            sub     val
+E013 002A            jmpl    inloop
+300B 002B            load    storeit   swap (a[j-1] and a[j])
+5005 002C            add     adr
+402F 002D            store   doit3
+300A 002E            load    val-
+0000 002F   doit3    dw      0
+300B 0030            load    storeit
+5005 0031 	     add     adr
+6004 0032            sub     one
+4035 0033            store   doit4
+3009 0034            load    val
+0000 0035   doit4    dw      0
+C013 0036            jmp     inloop
+3002 0037   iitr     store   i         i ++
+5004 0038            add     one
+4002 0039            store   i
+C00C 003A            jmp     outloop
+0000 003B   xit      dw      o         halt! you done.
+000E 003C                              array:
+0007 003D
+0005 003E
+0009 003F
+0001 0040 
